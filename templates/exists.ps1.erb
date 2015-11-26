@@ -1,17 +1,17 @@
 $shell = New-Object -COM WScript.Shell
 $shortcut = $shell.CreateShortcut("<%= @lnk_path %>")
 
-If (-Not ($shortcut.TargetPath -eq "<%= @target %>")) { Exit 1 }
+If (-Not ($shortcut.TargetPath -eq "<%= @target.gsub(%r{/}, '\\') %>")) { Exit 1 }
 <% unless @arguments.nil? -%>
-If (-Not ($shortcut.Arguments -eq "<%= @arguments %>")) { Exit 1 }
+If (-Not ($shortcut.Arguments -eq "<%= @arguments.gsub(%r{/}, '\\') %>")) { Exit 1 }
 <% end -%>
 <% unless @description.nil? -%>
-If (-Not ($shortcut.Description -eq "<%= @description %>")) { Exit 1 }
+If (-Not ($shortcut.Description -eq "<%= @description.gsub(%r{/}, '\\') %>")) { Exit 1 }
 <% end -%>
 <% unless @working_directory.nil? -%>
-If (-Not ($shortcut.WorkingDirectory -eq "<%= @working_directory %>")) { Exit 1 }
+If (-Not ($shortcut.WorkingDirectory -eq "<%= @working_directory.gsub(%r{/}, '\\') %>")) { Exit 1 }
 <% end -%>
 <% unless @icon_location.nil? -%>
-If (-Not ($shortcut.IconLocation -eq "<%= @icon_location %>")) { Exit 1 }
+If (-Not ($shortcut.IconLocation -eq "<%= @icon_location.gsub(%r{/}, '\\') %>")) { Exit 1 }
 <% end -%>
 Exit 0

@@ -2,17 +2,17 @@ $shell = New-Object -COM WScript.Shell
 $shortcut = $shell.CreateShortcut("<%= @lnk_path %>")
 $shortcut.TargetPath = "<%= @target %>"
 
-<% unless @arguments == :undef -%>
-$shortcut.Arguments = "<%= @arguments %>"
+<% unless @arguments.nil? -%>
+$shortcut.Arguments = "<%= @arguments.gsub(%r{/}, '\\') %>"
 <% end -%>
-<% unless @description == :undef -%>
-$shortcut.Description = "<%= @description %>"
+<% unless @description.nil? -%>
+$shortcut.Description = "<%= @description.gsub(%r{/}, '\\') %>"
 <% end -%>
-<% unless @working_directory == :undef -%>
-$shortcut.WorkingDirectory = "<%= @working_directory %>"
+<% unless @working_directory.nil? -%>
+$shortcut.WorkingDirectory = "<%= @working_directory.gsub(%r{/}, '\\') %>"
 <% end -%>
-<% unless @icon_location == :undef -%>
-$shortcut.IconLocation = "<%= @icon_location %>"
+<% unless @icon_location.nil? -%>
+$shortcut.IconLocation = "<%= @icon_location.gsub(%r{/}, '\\') %>"
 <% end -%>
 
 $shortcut.Save()
