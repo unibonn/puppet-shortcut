@@ -1,0 +1,18 @@
+$shell = New-Object -COM WScript.Shell
+$shortcut = $shell.CreateShortcut("<%= @lnk_path %>")
+$shortcut.TargetPath = "<%= @target %>"
+
+<% unless @arguments == :undef -%>
+$shortcut.Arguments = "<%= @arguments %>"
+<% end -%>
+<% unless @description == :undef -%>
+$shortcut.Description = "<%= @description %>"
+<% end -%>
+<% unless @working_directory == :undef -%>
+$shortcut.WorkingDirectory = "<%= @working_directory %>"
+<% end -%>
+<% unless @icon_location == :undef -%>
+$shortcut.IconLocation = "<%= @icon_location %>"
+<% end -%>
+
+$shortcut.Save()
