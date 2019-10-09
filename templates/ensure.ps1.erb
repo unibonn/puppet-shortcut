@@ -3,16 +3,16 @@ $shortcut = $shell.CreateShortcut("<%= @lnk_path %>")
 $shortcut.TargetPath = "<%= @target %>"
 
 <% unless @arguments.nil? -%>
-$shortcut.Arguments = "<%= @arguments.gsub(%r{/}, '\\') %>"
+$shortcut.Arguments = "<%= @arguments %>"
 <% end -%>
 <% unless @description.nil? -%>
-$shortcut.Description = "<%= @description.gsub(%r{/}, '\\') %>"
+$shortcut.Description = "<%= @description %>"
 <% end -%>
 <% unless @working_directory.nil? -%>
-$shortcut.WorkingDirectory = "<%= @working_directory.gsub(%r{/}, '\\') %>"
+$shortcut.WorkingDirectory = "<%= @working_directory %>"
 <% end -%>
 <% unless @icon_location.nil? -%>
-$shortcut.IconLocation = "<%= @icon_location.gsub(%r{/}, '\\') %>"
+$shortcut.IconLocation = "<%= @icon_location %>"
 <% end -%>
 
 $shortcut.Save()
